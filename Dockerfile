@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY services/booking_service/ ./services/booking_service/
-COPY shared/ ./shared/
-COPY data/ ./data/
+COPY . .
 
-CMD ["uvicorn", "services.booking_service.app:app", "--host", "0.0.0.0", "--port", "8003"]
+EXPOSE 8003
+
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8003"]

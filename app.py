@@ -24,7 +24,7 @@ from pathlib import Path
 from contextlib import asynccontextmanager
 
 # Add backend root to path for shared imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 
 from data.indian_locations import get_center_by_id
 from fastapi import Depends
