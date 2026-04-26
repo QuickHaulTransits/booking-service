@@ -59,7 +59,7 @@ jobs:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   # 4. Build & Push
-  docker:
+  ghcr:
     needs: [sonarqube, snyk]
     if: github.event_name == 'push'
     uses: QuickHaulTransits/quickhaul-templates/.github/workflows/_docker-ci.yml@feature/templates
@@ -71,7 +71,7 @@ jobs:
 
   # 5. Container Scan (Trivy)
   trivy:
-    needs: docker
+    needs: ghcr
     if: github.event_name == 'push'
     uses: QuickHaulTransits/quickhaul-templates/.github/workflows/_trivy.yml@feature/templates
     with:
@@ -82,7 +82,7 @@ jobs:
 
   # 6. Failure Notification
   notification:
-    needs: [sonarqube, snyk, docker, trivy]
+    needs: [sonarqube, snyk, ghcr, trivy]
     if: failure()
     uses: QuickHaulTransits/quickhaul-templates/.github/workflows/_notify.yml@feature/templates
     with:
