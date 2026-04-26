@@ -66,8 +66,8 @@ jobs:
     with:
       image-name: quickhaul-booking
     secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+      DOCKER_USERNAME: ${{ github.actor }}
+      DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
   # 5. Container Scan (Trivy)
   trivy:
@@ -77,8 +77,8 @@ jobs:
     with:
       image-name: quickhaul-booking
     secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+      DOCKER_USERNAME: ${{ github.actor }}
+      DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
   # 6. Failure Notification
   notification:
