@@ -78,6 +78,7 @@ jobs:
       image-name: quickhaul-booking
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
   # 6. Failure Notification
   notification:
