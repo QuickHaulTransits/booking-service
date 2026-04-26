@@ -90,3 +90,4 @@ jobs:
       body: "The production pipeline for booking-service has failed. Please check the GitHub Actions logs for details."
     secrets:
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
